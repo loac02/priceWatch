@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class EmailService {
 
-    @Value("${spring.mail.username}")
+    @Value("${spring.mail.properties.mail.from}")
     private String remetenteAutenticado;
     private final JavaMailSender mailSender;
 
@@ -30,7 +30,7 @@ public class EmailService {
             System.out.println("[Email] Notificação enviada com sucesso para: " + para);
         } catch (Exception e) {
             System.err.println("[Email Erro] Falha ao enviar e-mail para " + para + " | Erro: " + e.getMessage());
-            e.printStackTrace(); // Boa prática para ver o stacktrace completo se falhar
+            e.printStackTrace();
         }
     }
 }
