@@ -2,182 +2,188 @@
 
 # 📉 PriceWatch
 
-### Automated Price Monitoring Platform built with Java + Spring Boot
+### Plataforma de Monitoramento Automático de Preços construída com Java + Spring Boot
 
-Track product prices automatically using **Web Scraping**, **RabbitMQ**, **PostgreSQL**, **MongoDB**, and **Email Notifications**.
+Monitore preços automaticamente utilizando **Web Scraping**, **RabbitMQ**, **PostgreSQL**, **MongoDB** e **Notificações por E-mail**.
 
 ---
 
 ![Java](https://img.shields.io/badge/Java-17-orange?style=for-the-badge&logo=openjdk)
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-Framework-6DB33F?style=for-the-badge&logo=springboot)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-316192?style=for-the-badge&logo=postgresql)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Banco-316192?style=for-the-badge&logo=postgresql)
 ![MongoDB](https://img.shields.io/badge/MongoDB-NoSQL-4EA94B?style=for-the-badge&logo=mongodb)
-![RabbitMQ](https://img.shields.io/badge/RabbitMQ-Messaging-FF6600?style=for-the-badge&logo=rabbitmq)
-![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?style=for-the-badge&logo=docker)
+![RabbitMQ](https://img.shields.io/badge/RabbitMQ-Mensageria-FF6600?style=for-the-badge&logo=rabbitmq)
+![Docker](https://img.shields.io/badge/Docker-Containerizado-2496ED?style=for-the-badge&logo=docker)
 ![Maven](https://img.shields.io/badge/Maven-Build-C71A36?style=for-the-badge&logo=apachemaven)
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+![Licença](https://img.shields.io/badge/Licença-MIT-green?style=for-the-badge)
 
 ---
 
-### ⚡ Monitor prices. Store history. Notify automatically.
+### ⚡ Monitore preços. Armazene histórico. Notifique automaticamente.
 
 </div>
 
 ---
 
-# 📖 Overview
+# 📖 Visão Geral
 
-**PriceWatch** is a backend platform developed with **Java + Spring Boot** for **automated price monitoring in real e-commerce pages**.
+O **PriceWatch** é uma plataforma backend desenvolvida com **Java + Spring Boot** para **monitoramento automatizado de preços em páginas reais de e-commerce**.
 
-The system periodically checks product prices using **Web Scraping**, stores price history using **hybrid persistence (PostgreSQL + MongoDB)**, and sends **asynchronous email notifications via RabbitMQ** whenever a configured target price is reached.
+O sistema verifica periodicamente os preços utilizando **Web Scraping**, armazena o histórico através de **persistência híbrida (PostgreSQL + MongoDB)** e envia **notificações assíncronas via RabbitMQ** quando o preço configurado pelo usuário é atingido.
 
-This project was designed to explore:
+Este projeto foi desenvolvido com foco em explorar:
 
-- Event-driven workflows
-- Background processing
-- Scraping automation
-- Hybrid persistence
-- Asynchronous communication
-- Backend architecture with Spring Boot
-
----
-
-# ✨ Features
-
-## Core Features
-
-✅ Create price alerts
-
-✅ Automatic price monitoring
-
-✅ Real e-commerce scraping
-
-✅ Price history tracking
-
-✅ Hybrid persistence
-
-✅ RabbitMQ async notifications
-
-✅ Email delivery
-
-✅ Dockerized deployment
+- Fluxos orientados a eventos
+- Processamento em segundo plano
+- Automação com scraping
+- Persistência híbrida
+- Comunicação assíncrona
+- Arquitetura backend com Spring Boot
 
 ---
 
-# 🏗️ Architecture
+# ✨ Funcionalidades
 
-PriceWatch follows a **modular service-oriented architecture** where each layer is responsible for a specific part of the workflow.
+## Recursos Principais
 
-## System Flow
+✅ Cadastro de alertas de preço
+
+✅ Monitoramento automático
+
+✅ Scraping em e-commerces reais
+
+✅ Histórico de preços
+
+✅ Persistência híbrida
+
+✅ Notificações assíncronas com RabbitMQ
+
+✅ Envio de e-mails
+
+✅ Deploy containerizado com Docker
+
+---
+
+# 🏗️ Arquitetura
+
+O PriceWatch segue uma **arquitetura modular orientada a serviços**, onde cada camada possui responsabilidade específica dentro do fluxo da aplicação.
+
+## Fluxo do Sistema
 
 ```mermaid
 flowchart TD
 
-A[REST API] --> B[Scheduler]
+A[API REST] --> B[Scheduler]
 B --> C[Scraper Service]
 
-C --> D[(MongoDB Price History)]
-C --> E{Target Price Reached?}
+C --> D[(MongoDB Histórico)]
+C --> E{Preço Alvo Atingido?}
 
-E -->|Yes| F[RabbitMQ]
+E -->|Sim| F[RabbitMQ]
 F --> G[Notification Consumer]
 G --> H[Email Service]
-H --> I[User]
+H --> I[Usuário]
 
-A --> J[(PostgreSQL Alerts)]
+A --> J[(PostgreSQL Alertas)]
 ```
 
 ---
 
-## Architecture Layers
+## Camadas da Arquitetura
 
-| Layer | Responsibility |
+| Camada | Responsabilidade |
 |---|---|
-| Controllers | REST endpoints |
-| Services | Business logic |
-| Repositories | Data persistence |
-| Scheduler | Periodic monitoring |
-| Scraper | Price extraction and normalization |
-| Consumer | Async notification processing |
-| Email Service | Notification delivery |
+| Controllers | Endpoints REST |
+| Services | Regras de negócio |
+| Repositories | Persistência |
+| Scheduler | Monitoramento periódico |
+| Scraper | Captura e normalização de preços |
+| Consumer | Processamento assíncrono |
+| Email Service | Envio de notificações |
 
 ---
 
-# ⚙️ Tech Stack
+# ⚙️ Stack Tecnológica
 
 <div align="center">
 
-| Category | Technology |
+| Categoria | Tecnologia |
 |---|---|
-| Language | Java 17 |
+| Linguagem | Java 17 |
 | Framework | Spring Boot |
-| SQL Database | PostgreSQL |
-| NoSQL Database | MongoDB |
+| Banco SQL | PostgreSQL |
+| Banco NoSQL | MongoDB |
 | Web Scraping | Jsoup |
-| Messaging | RabbitMQ |
-| Email | Spring Mail |
+| Mensageria | RabbitMQ |
+| E-mail | Spring Mail |
 | Build Tool | Maven |
-| Containerization | Docker |
+| Containerização | Docker |
 
 </div>
 
 ---
 
-# 🔄 Workflow
+# 🔄 Fluxo de Funcionamento
 
-PriceWatch operates through an automated monitoring pipeline.
+O PriceWatch opera através de um pipeline automatizado de monitoramento.
 
-### 1. Alert Registration
-Users register:
+### 1. Cadastro do Alerta
 
-- Product URL
-- Target price
-- Email address
+O usuário informa:
 
----
-
-### 2. Scheduled Monitoring
-The scheduler periodically scans all registered alerts.
+- URL do produto
+- Preço desejado
+- Endereço de e-mail
 
 ---
 
-### 3. Price Extraction
-The `ScraperService` fetches and parses product pages using **Jsoup** and multiple CSS selector strategies.
+### 2. Monitoramento Agendado
+
+O scheduler consulta periodicamente todos os alertas cadastrados.
 
 ---
 
-### 4. History Persistence
-Price changes are stored in **MongoDB** to maintain historical tracking.
+### 3. Captura de Preço
+
+O `ScraperService` utiliza **Jsoup** e múltiplos seletores CSS para localizar e interpretar o preço do produto.
 
 ---
 
-### 5. Async Notification
-When the target price is reached:
+### 4. Persistência do Histórico
 
-- Event published to RabbitMQ
-- Notification processed asynchronously
+Alterações de preço são registradas no **MongoDB** para manter o histórico de variação.
 
 ---
 
-### 6. Email Delivery
-The consumer receives the message and sends the email notification.
+### 5. Notificação Assíncrona
+
+Quando o preço configurado é atingido:
+
+- Evento publicado no RabbitMQ
+- Notificação processada assincronamente
 
 ---
 
-# 🚀 Getting Started
+### 6. Entrega do E-mail
 
-## Prerequisites
+O consumer recebe a mensagem e realiza o envio do e-mail ao usuário.
+
+---
+
+# 🚀 Começando
+
+## Pré-requisitos
 
 - Java 17
 - Maven
 - PostgreSQL
 - MongoDB
 - RabbitMQ
-- Docker (optional)
+- Docker (opcional)
 
 ---
 
-## Clone Repository
+## Clonar Repositório
 
 ```bash
 git clone https://github.com/loac02/priceWatch.git
@@ -186,7 +192,7 @@ cd priceWatch
 
 ---
 
-## Build Project
+## Build do Projeto
 
 ```bash
 mvn clean package
@@ -194,7 +200,7 @@ mvn clean package
 
 ---
 
-## Run Application
+## Executar Aplicação
 
 ```bash
 java -jar target/*.jar
@@ -204,15 +210,15 @@ java -jar target/*.jar
 
 # 🐳 Docker
 
-The application includes a **multi-stage Dockerfile** for lightweight container deployment.
+A aplicação possui **Dockerfile multi-stage**, permitindo build e execução através de containers leves.
 
-## Build Image
+## Build da Imagem
 
 ```bash
 docker build -t pricewatch .
 ```
 
-## Run Container
+## Executar Container
 
 ```bash
 docker run -p 8080:8080 pricewatch
@@ -220,28 +226,33 @@ docker run -p 8080:8080 pricewatch
 
 ---
 
-# 🔐 Environment Variables
+# 🔐 Variáveis de Ambiente
 
-Configure the following variables before running:
+Configure as seguintes variáveis antes da execução:
 
-| Variable | Description |
+| Variável | Descrição |
 |---|---|
-| DB_URL | PostgreSQL URL |
-| DB_USERNAME | Database username |
-| DB_PASSWORD | Database password |
-| MONGO_URI | MongoDB connection |
-| RABBITMQ_HOST | RabbitMQ host |
-| RABBITMQ_PORT | RabbitMQ port |
-| RABBITMQ_USERNAME | RabbitMQ user |
-| RABBITMQ_PASSWORD | RabbitMQ password |
-| EMAIL_USER | Email account |
-| EMAIL_PASS | Email app password |
+| DB_URL | URL PostgreSQL |
+| DB_USERNAME | Usuário do banco |
+| DB_PASSWORD | Senha do banco |
+| MONGO_URI | Conexão MongoDB |
+| RABBITMQ_HOST | Host RabbitMQ |
+| RABBITMQ_PORT | Porta RabbitMQ |
+| RABBITMQ_USERNAME | Usuário RabbitMQ |
+| RABBITMQ_PASSWORD | Senha RabbitMQ |
+| RABBITMQ_SSL | SSL RabbitMQ |
+| SPRING_RABBITMQ_VIRTUAL_HOST | Usuário RabbitMQ |
+| EMAIL_USER | email user |
+| EMAIL_PASS | App Password |
+| EMAIL_REMETENTE | Email de envio |
+| JAVA_TOOL_OPTIONS | IPV4 |
+
 
 ---
 
-# 📡 API Example
+# 📡 Exemplo da API
 
-## Create Alert
+## Criar Alerta
 
 ### Request
 
@@ -272,7 +283,7 @@ Configure the following variables before running:
 
 ---
 
-# 📂 Project Structure
+# 📂 Estrutura do Projeto
 
 ```bash
 src
@@ -288,51 +299,51 @@ src
 
 ---
 
-# 📈 Future Improvements
+# 📈 Próximas Evoluções
 
-The project roadmap includes:
+O roadmap do projeto inclui:
 
-- DTO layer
-- Global exception handling
-- Structured logging
-- Retry / DLQ for RabbitMQ
-- Automated testing
-- Observability & metrics
-- Improved scheduler resilience
-
----
-
-# 🎯 Project Goals
-
-PriceWatch was developed to explore and demonstrate practical backend engineering concepts such as:
-
-- Spring Boot architecture
-- Messaging systems
-- SQL + NoSQL integration
-- Web scraping automation
-- Background processing
-- Containerized deployment
+- Camada DTO
+- Tratamento global de exceções
+- Logging estruturado
+- Retry / DLQ no RabbitMQ
+- Testes automatizados
+- Observabilidade e métricas
+- Maior resiliência do scheduler
 
 ---
 
-# 🤝 Contributing
+# 🎯 Objetivos do Projeto
 
-Contributions, suggestions and improvements are welcome.
+O PriceWatch foi desenvolvido para explorar e demonstrar conceitos práticos de engenharia backend como:
 
-Feel free to open issues or submit pull requests.
+- Arquitetura com Spring Boot
+- Sistemas de mensageria
+- Integração SQL + NoSQL
+- Automação com scraping
+- Processamento em segundo plano
+- Deploy containerizado
 
 ---
 
-# 📜 License
+# 🤝 Contribuições
 
-This project is licensed under the **MIT License**.
+Sugestões, melhorias e contribuições são bem-vindas.
+
+Sinta-se à vontade para abrir issues ou enviar pull requests.
+
+---
+
+# 📜 Licença
+
+Este projeto está licenciado sob a **Licença MIT**.
 
 ---
 
 <div align="center">
 
-### Built to explore backend engineering, async processing and real-world automation with Spring Boot.
+### Construído para explorar engenharia backend, processamento assíncrono e automação real com Spring Boot.
 
-⭐ If you found this project interesting, consider giving it a star.
+⭐ Se este projeto foi interessante para você, considere deixar uma estrela.
 
 </div>
